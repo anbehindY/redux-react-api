@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const GET_URL = 'https://randomuser.me/api/?results=5';
-const fetchUsers = createAsyncThunk (
+export const fetchUsers = createAsyncThunk (
     'users/fetchUsers',
     async () => {
         try {
@@ -27,7 +27,17 @@ const userSlice = createSlice({
 
     },
     extraReducers: builder => {
-
+        builder
+            .addCase(fetchUsers.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(fetchUsers.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.users = action.payload;
+            })
+            .addCase(fetchUsers.error, (state, action) => {
+                state.error = action.error.message;
+            })
     },
 });
 
