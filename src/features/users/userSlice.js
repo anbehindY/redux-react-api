@@ -9,8 +9,13 @@ const initialState = {
 const userSlice = createSlice({
     name: 'users',
     initialState,
+    reducers: {
+
+    },
     extraReducers: builder => {
 
-    }
+    },
 });
+
+export const userState = (state) => state.users;
 export default userSlice.reducer;
