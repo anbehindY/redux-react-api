@@ -1,4 +1,4 @@
-import { FetchedUsers } from "./components/fetchUsers";
+import { FetchedUsers } from "./components/fetchedUsers";
 
 function App() {
   return (
